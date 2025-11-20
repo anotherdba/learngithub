@@ -1,11 +1,12 @@
 name: first
-on: [workflow_dispatch]
+on: 
+  [workflow_dispatch]
 jobs:
   ubuntu:
     runs-on: ubuntu-latest
     steps:
       - name: Run a one-line script
-      - uses: actions/checkout@v4
+        uses: actions/checkout@v4
       - name: step two
         run: env | sort
 
@@ -13,6 +14,6 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Run a one-line script
-      - uses: actions/checkout@v4
+        uses: actions/checkout@v4
       - name: step two
         run: "get-childitem env: | sort-object Name"
