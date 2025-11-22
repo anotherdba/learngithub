@@ -2,18 +2,38 @@ name: first
 on: 
   [workflow_dispatch]
 jobs:
-  ubuntu:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Run a one-line script
-        uses: actions/checkout@v4
-      - name: step two
-        run: env | sort
 
-  windows:
-    runs-on: windows-latest
+  job_1:
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix: 
+        os_version: [ubuntu-latest, windows-latest]
+        node_version: [18, 20]
+
+    name: My first job_1
+    runs-on: ${{ matrix.os_version }}
     steps:
-      - name: Run a one-line script
-        uses: actions/checkout@v4
-      - name: step two
-        run: "get-childitem env: | sort-object Name"
+      - uses: actions/setup-node@v3.6.0
+        with:
+          node-version: ${{ matrix.node_version }}
+
+
+
+
+  # ubuntu:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Run a one-line script
+  #       uses: actions/checkout@v4
+  #     - name: step two
+  #       run: env | sort
+
+  # windows:
+  #   runs-on: windows-latest
+  #   needs: ubuntu
+  #   steps:
+  #     - name: Run a one-line script
+  #       uses: actions/checkout@v4
+  #     - name: step two
+  #       run: "get-childitem env: | sort-object Name"
