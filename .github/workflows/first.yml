@@ -13,6 +13,12 @@ jobs:
          echo "$GITHUB_OUTPUT"
          echo "the_secret is ${{ steps.sets-a-secret.outputs.the_secret }}"
          echo "secret-number is ${{ steps.sets-a-secret.outputs.secret-number }}"
+     
+    - id: generate
+      run: |
+          secret=$((RANDOM))
+          echo "secret-number=$secret" >> "$GITHUB_OUTPUT"
+          run: echo "The secret number is ${{ steps.generate.outputs.secret-number }}"
 
     # - name: Use that secret output (protected by a mask)
     #   run: |
