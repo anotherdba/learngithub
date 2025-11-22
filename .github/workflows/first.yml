@@ -9,9 +9,11 @@ jobs:
       run: |
         the_secret=$((RANDOM))
         # echo "::add-mask::$the_secret"
-         echo "secret-number=$the_secret" > "$GITHUB_OUTPUT"
+         echo "secret-number=$the_secret" >> "$GITHUB_OUTPUT"
          echo "$GITHUB_OUTPUT"
-         echo "the secret number is ${{ steps.sets-a-secret.outputs.secretnumber}}"
+         echo "the_secret is ${{ steps.sets-a-secret.outputs.the_secret }}"
+         echo "secret-number is ${{ steps.sets-a-secret.outputs.secret-number }}"
+
     # - name: Use that secret output (protected by a mask)
     #   run: |
  
