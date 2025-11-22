@@ -4,24 +4,30 @@ jobs:
   generate-a-secret-output:
     runs-on: ubuntu-latest
     steps:
-    - id: sets-a-secret
-      name: Generate, mask, and output a secret
+    - name: Set the value
+      id: step_one
       run: |
-        the_secret=$((RANDOM))
-        # echo "::add-mask::$the_secret"
-         echo "secret-number=$the_secret" >> "$GITHUB_OUTPUT"
-         echo "$GITHUB_OUTPUT"
-    - name: show the secret
-      run: |
-         echo "the_secret is ${{ steps.sets-a-secret.outputs.the_secret }}"
-         echo "secret-number is ${{ steps.sets-a-secret.outputs.secret-number }}"
+        echo "action_state=yellow" >> "$GITHUB_ENV"
+    - run: |
+        echo "${{ env.action_state }}" # This will output 'yellow'
+    # - id: sets-a-secret
+    #   name: Generate, mask, and output a secret
+    #   run: |
+    #     the_secret=$((RANDOM))
+    #     # echo "::add-mask::$the_secret"
+    #      echo "secret-number=$the_secret" >> "$GITHUB_OUTPUT"
+    #      echo "$GITHUB_OUTPUT"
+    # - name: show the secret
+    #   run: |
+    #      echo "the_secret is ${{ steps.sets-a-secret.outputs.the_secret }}"
+    #      echo "secret-number is ${{ steps.sets-a-secret.outputs.secret-number }}"
      
-    - id: generate
-      run: |
-          secret=$((RANDOM))
-          echo "secret-number=$secret" >> "$GITHUB_OUTPUT"
-    - name: show secret
-      run: echo "The secret number is ${{ steps.generate.outputs.secret-number }}"
+    # - id: generate
+    #   run: |
+    #       secret=$((RANDOM))
+    #       echo "secret-number=$secret" >> "$GITHUB_OUTPUT"
+    # - name: show secret
+    #   run: echo "The secret number is ${{ steps.generate.outputs.secret-number }}"
 
     # - name: Use that secret output (protected by a mask)
     #   run: |
