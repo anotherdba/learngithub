@@ -11,9 +11,10 @@ jobs:
         # echo "::add-mask::$the_secret"
          echo "secret-number=$the_secret" > "$GITHUB_OUTPUT"
          echo "$GITHUB_OUTPUT"
+         echo "the secret number is ${{ steps.sets-a-secret.outputs.secretnumber}}"
     # - name: Use that secret output (protected by a mask)
     #   run: |
-    #     echo "the secret number is ${{ steps.sets-a-secret.outputs.secretnumber}}"
+ 
 # on: 
 #   [workflow_dispatch]
 # jobs:
