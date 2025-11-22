@@ -11,6 +11,8 @@ jobs:
         # echo "::add-mask::$the_secret"
          echo "secret-number=$the_secret" >> "$GITHUB_OUTPUT"
          echo "$GITHUB_OUTPUT"
+    - name: show the secret
+      run: |
          echo "the_secret is ${{ steps.sets-a-secret.outputs.the_secret }}"
          echo "secret-number is ${{ steps.sets-a-secret.outputs.secret-number }}"
      
@@ -18,7 +20,8 @@ jobs:
       run: |
           secret=$((RANDOM))
           echo "secret-number=$secret" >> "$GITHUB_OUTPUT"
-          echo "The secret number is ${{ steps.generate.outputs.secret-number }}"
+    - name: show secret
+      run: echo "The secret number is ${{ steps.generate.outputs.secret-number }}"
 
     # - name: Use that secret output (protected by a mask)
     #   run: |
