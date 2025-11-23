@@ -3,21 +3,39 @@ name: 03-workflow-events
 on: 
   workflow_dispatch:
 
+
+# jobs:
+#   node-20-release:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v3.5.3
+#       - name: Use Node.js 20
+#         uses: actions/setup-node@v3.6.0
+#         with:
+#           node-version: 20
+#       - name: Show Node.js version
+#         run: node --version
+#       - name: Show npm version
+#         run: npm --version  
+#       - name: Show npm config
+#         run: npm config list  
+#       - name: Show npm cache
+#         run: npm cache verify
    
-jobs:
-  ubuntu-echo:
-    runs-on: ubuntu-latest
-    steps:
-      - name: show the trigger
-        run: |
-         echo "The workflow was run: on $RUNNER_OS"
+# jobs:
+#   ubuntu-echo:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: show the trigger
+#         run: |
+#          echo "The workflow was run: on $RUNNER_OS"
          
-  windows-echo:
-    runs-on: windows-latest
-    steps:
-      - name: show the trigger
-        run: |
-         echo "The workflow was run: on ${{ runner.os }}"
+#   windows-echo:
+#     runs-on: windows-latest
+#     steps:
+#       - name: show the trigger
+#         run: |
+#          echo "The workflow was run: on ${{ runner.os }}"
 # jobs:
 #   echo:
 #     runs-on: ubuntu-latest
