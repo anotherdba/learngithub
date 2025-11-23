@@ -17,7 +17,7 @@ jobs:
     steps:
       - name: show the trigger
         run: |
-         echo "The workflow was run: on $RUNNER_OS"
+         echo "The workflow was run: on ${{ runner.os }}"
 # jobs:
 #   echo:
 #     runs-on: ubuntu-latest
